@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
 const ExpenseDashboardPage = () => (
     <div>
-    This is from my dashnoard component 
+    This is from my dashboard component 
     </div>
 );
 
@@ -26,19 +26,21 @@ const HelpPage = () => (
     This is from my help component 
     </div>
 );
-
-// CHALLENGE 77.1
-// add /edit EditExpensePage
-// add /help HelpPage
+const NotFoundPage = () => (
+    <div>
+        <b>404!</b>
+    </div>
+);
 
 const routes = (
     <BrowserRouter>
-        <div>
+        <Switch>
             <Route path="/" component={ExpenseDashboardPage} exact={true}/>
             <Route path="/create" component={AddExpensePage}/>
             <Route path="/edit" component={EditExpensePage}/>
             <Route path="/help" component={HelpPage}/>
-        </div>
+            <Route component={NotFoundPage}/>
+        </Switch>
     </BrowserRouter>
 );
 
