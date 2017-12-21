@@ -13,21 +13,11 @@ const AppRouter = () => (
         <div>
             <Header />
             <Switch>
-                <Route path="/" exact={true}>
-                    <ExpenseDashboardPage /> 
-                </Route>
-                <Route path="/create">
-                    <AddExpensePage />
-                </Route>
-                <Route path="/edit">
-                    <EditExpensePage />
-                </Route>
-                <Route path="/help">
-                    <HelpPage />
-                </Route>
-                <Route>
-                    <NotFoundPage/>
-                </Route>
+            <Route path="/" component={ExpenseDashboardPage} exact={true}/>
+            <Route path="/create" component={AddExpensePage}/>
+            <Route path="/edit" component={EditExpensePage}/>
+            <Route path="/help" component={HelpPage}/>
+            <Route component={NotFoundPage} />
             </Switch>
             <a href="http://localhost:8080/pagennotexist"> Go to PageNotExist </a>
         </div>
