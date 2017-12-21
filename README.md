@@ -3,10 +3,17 @@ GETTING STARTED:
 * To get the app running do :
     1. Go to project root
     2. run 
-        Isabels-Mac:expensify-app iwolters$ yarn add live-server babel-cli@6.24.1
+        $ yarn add live-server babel-cli@6.24.1
     3. run
-        Isabels-Mac:expensify-app iwolters$ yarn devServer
+        $ yarn devServer
 
+* RESTART devServer whenever YOU EDIT 
+        webpack.config.js
+
+* To change your entry point of your app go to
+        webpack.config.js
+and edit 
+        entry:  './src/app.js'
 
 Goal of this app can be seen here:
 http://expensify.mead.io/
