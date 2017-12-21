@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import AddExpensePage from '../components/AddExpensePage';
 import EditExpensePage from '../components/EditExpensePage';
@@ -19,7 +19,7 @@ const AppRouter = () => (
             <Route path="/help" component={HelpPage}/>
             <Route component={NotFoundPage} />
             </Switch>
-            <a href="http://localhost:8080/pagennotexist"> Go to PageNotExist </a>
+            <a href="http://localhost:8080/pagennotexist"> Go to NotFoundPage </a>
         </div>
     </BrowserRouter>
 );
