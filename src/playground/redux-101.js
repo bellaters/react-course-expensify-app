@@ -11,9 +11,9 @@ const incrementCount = (({ incrementBy = 1 } = {})=>({
 }));
 
 // Action generators - functions that return action objects
-const decrementCount = ((payload = {})=>({
+const decrementCount = (({decrementBy = 1} = {})=>({
     type: 'DECREMENT', 
-    decrementBy: typeof payload.decrementBy === 'number' ? payload.decrementBy : 1
+    decrementBy: decrementBy
 }));
 
 const store = createStore((state = {
