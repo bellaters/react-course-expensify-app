@@ -23,7 +23,7 @@ const setCount = (({count = 0} = {}) => ({
     count
 }));
 
-const resetCount = ( () => setCount() ) 
+const resetCount = ( () => ({type: 'RESET'}));
 
 const store = createStore((state = {
     count: 0
