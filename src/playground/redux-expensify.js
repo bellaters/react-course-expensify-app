@@ -27,7 +27,6 @@ const removeExpense = ({ id } = {}) => ({
 });
 
 // EDIT_EXPENSIVE
-// (expenseTwo.expense.id, {amount: 500})
 const editExpense = (id, update = {} ) => ({
     type: 'EDIT_EXPENSIVE',
     expense: {
@@ -36,8 +35,14 @@ const editExpense = (id, update = {} ) => ({
     }
 });
 
-
 // SET_TEXT_FILTER
+//setTextFilter('rent')
+//setTextFilter('') -> 
+const setTextFilter = (text = '') => ({
+    type: 'SET_TEXT_FILTER',
+    text
+});
+
 // SORT_BY_DATE
 // SORT_BY_AMOUNT
 // SET_START_DATE
@@ -69,6 +74,7 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
             return state;
     }
 };
+
 // Filters Reducers
 const filtersReducerDefaultState = {
     text: '',
@@ -76,8 +82,15 @@ const filtersReducerDefaultState = {
     startDate: undefined,
     endDate: undefined
 };
+
+
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
     switch(action.type) {
+        case 'SET_TEXT_FILTER':
+            return {
+                ...state, 
+                text: action.text
+            };
         default:
             return state;
     }
@@ -99,10 +112,12 @@ const expenseTwo = store.dispatch(addExpense({desciption: 'Food', amount: '234'}
 //log(expenseOne);
 
 store.dispatch(removeExpense({id: expenseOne.expense.id}));
-
 store.dispatch(editExpense(expenseTwo.expense.id, {amount: 500}));
 
+store.dispatch(setTextFilter('rent'));
 log(store.getState());
+
+
 
 const demoState = {
     expenses: [{
