@@ -25,7 +25,8 @@ const setCount = (({count = 0} = {}) => ({
 
 const resetCount = ( () => ({type: 'RESET'}));
 
-const store = createStore((state = {
+// Reducers
+const countReducer = (state = {
     count: 0
 }, action) => {
     switch (action.type) {
@@ -50,7 +51,9 @@ const store = createStore((state = {
     }
 
     return state;
-});
+};
+
+const store = createStore(countReducer);
 
 log('Init value of store state: ',store.getState());
 const unsubscribe = store.subscribe(() => {
