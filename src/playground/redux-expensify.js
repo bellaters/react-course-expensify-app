@@ -14,8 +14,8 @@ const log = console.log;
 // SET_END_DATE
 
 //Expense Reducers
-const expenseReducerDefaultState = [];
-const expensesReducer = (state = expenseReducerDefaultState, action) => {
+const expensesReducerDefaultState = [];
+const expensesReducer = (state = expensesReducerDefaultState, action) => {
     switch(action.type) {
         default:
             return state;
@@ -31,7 +31,7 @@ const filtersReducerDefaultState = {
     startDate: undefined,
     endDate: undefined
 };
-const filterReducer = (state = filtersReducerDefaultState, action) => {
+const filtersReducer = (state = filtersReducerDefaultState, action) => {
     switch(action.type) {
         default:
             return state;
@@ -40,7 +40,7 @@ const filterReducer = (state = filtersReducerDefaultState, action) => {
 const store = createStore(
     combineReducers({
         expenses: expensesReducer,
-        filters: filterReducer
+        filters: filtersReducer
     })
 );
 log('Initial State of Store: ',store.getState());
