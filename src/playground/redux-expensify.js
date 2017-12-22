@@ -22,6 +22,13 @@ const addExpense = (
     }
 });
 // REMOVE_EXPENSE
+// CHALLENGE 93.1
+// create the respective Method
+const removeExpense = ({ id } = {}) => ({
+    type: 'REMOVE_EXPENSE',
+    id
+});
+
 // EDIT_EXPENSIVE
 // SET_TEXT_FILTER
 // SORT_BY_DATE
@@ -29,23 +36,22 @@ const addExpense = (
 // SET_START_DATE
 // SET_END_DATE
 
-//Expense Reducers
+// Expense Reducers
 const expensesReducerDefaultState = [];
 const expensesReducer = (state = expensesReducerDefaultState, action) => {
     switch(action.type) {
         case 'ADD_EXPENSE':
-            return [
-                ...state,
-                action.expense
-            ];
+        return [
+            ...state,
+            action.expense
+        ];
+        case 'REMOVE_EXPENSE':
+            return state.filter( ({id}) => id !== action.id);
         default:
             return state;
     }
 };
 // Filters Reducers
-// CHALLENGE 92.1 create filterReducer with following default state
-// and register it to store below via combineReducers call
-// text -> '', sortBy -> date, startDate -> undefined, endDate -> undefined
 const filtersReducerDefaultState = {
     text: '',
     sortBy: 'date',
@@ -68,6 +74,12 @@ store.subscribe(()=>{
     log('On Store Dispatch: ',store.getState());
 });
 
-store.dispatch(addExpense({desciption: 'Rent', amount: '100'}));
-store.dispatch(addExpense({desciption: 'Food', amount: '234'}));
+const expenseOne = store.dispatch(addExpense({desciption: 'Rent', amount: '100'}));
+const expenseTwo = store.dispatch(addExpense({desciption: 'Food', amount: '234'}));
+//log(expenseOne);
+
+store.dispatch(removeExpense({id: expenseOne.expense.id}));
+log(expenseOne);
+
+//log(expenseTwo);
 
