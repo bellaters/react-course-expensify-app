@@ -5,9 +5,9 @@ const log = console.log;
 // 2. Step: use decomposition and default settings of it to simplyífy
 // Compare it to decrementCount! It is much shorter and more readable.
 
-const incrementCount = (({incrementBy = 1})=>({
+const incrementCount = (({ incrementBy = 1 } = {})=>({
     type: 'INCREMENT', 
-    incrementBy: incrementBy
+    incrementBy
 }));
 
 // Action generators - functions that return action objects
