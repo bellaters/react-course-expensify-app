@@ -1,21 +1,32 @@
 import {createStore} from 'redux';
-
 const log = console.log;
-log('running');
+
+// Action generators - functions that return action objects
+// 2. Step: use decomposition and default settings of it to simplyífy
+// Compare it to decrementCount! It is much shorter and more readable.
+
+const incrementCount = (({incrementBy = 1})=>({
+    type: 'INCREMENT', 
+    incrementBy: incrementBy
+}));
+
+// Action generators - functions that return action objects
+const decrementCount = ((payload = {})=>({
+    type: 'DECREMENT', 
+    decrementBy: typeof payload.decrementBy === 'number' ? payload.decrementBy : 1
+}));
 
 const store = createStore((state = {
     count: 0
 }, action) => {
     switch (action.type) {
         case 'INCREMENT':
-            const incrementBy = typeof action.incrementBy === 'number' ? action.incrementBy : 1;
             return {
-                count: state.count + incrementBy
+                count: state.count + action.incrementBy
             };
         case 'DECREMENT':
-            const decrementBy = typeof action.decrementBy === 'number' ? action.decrementBy : 1;
             return {
-                count: state.count - decrementBy
+                count: state.count - action.decrementBy
             };
         case 'SET':
             return {
@@ -32,20 +43,19 @@ const store = createStore((state = {
     return state;
 });
 
-log(store.getState());
+log('Init value of store state: ',store.getState());
 const unsubscribe = store.subscribe(() => {
     log(store.getState());
 });
 
 // Action - an object that gets sent to the store. 
 // For example increment, decrement, reset.
-store.dispatch({
-    type: 'INCREMENT',
-    incrementBy: 5
-});
-store.dispatch({type: 'DECREMENT'});
-store.dispatch({type: 'INCREMENT'});
+store.dispatch(incrementCount({incrementBy: 5}));
+store.dispatch(decrementCount({decrementBy : 4}));
+store.dispatch(incrementCount());
 store.dispatch({type: 'SET', count: 101});
+
+
 unsubscribe();
 store.dispatch({type: 'RESET'});
 store.dispatch({type: 'INCREMENT'});
