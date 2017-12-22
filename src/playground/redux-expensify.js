@@ -27,6 +27,16 @@ const removeExpense = ({ id } = {}) => ({
 });
 
 // EDIT_EXPENSIVE
+// (expenseTwo.expense.id, {amount: 500})
+const editExpense = (id, update = {} ) => ({
+    type: 'EDIT_EXPENSIVE',
+    expense: {
+        ...update,
+        id
+    }
+});
+
+
 // SET_TEXT_FILTER
 // SORT_BY_DATE
 // SORT_BY_AMOUNT
@@ -44,6 +54,17 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
         ];
         case 'REMOVE_EXPENSE':
             return state.filter( ({id}) => id !== action.id);
+        case 'EDIT_EXPENSIVE':
+            return state.map( (expense) => {
+                if(expense.id === action.expense.id){
+                    return {
+                        ...expense,
+                        ...action.expense
+                    };  
+                }else {
+                    return expense;
+                }
+            });
         default:
             return state;
     }
@@ -78,9 +99,10 @@ const expenseTwo = store.dispatch(addExpense({desciption: 'Food', amount: '234'}
 //log(expenseOne);
 
 store.dispatch(removeExpense({id: expenseOne.expense.id}));
-log(expenseOne);
 
-//log(expenseTwo);
+store.dispatch(editExpense(expenseTwo.expense.id, {amount: 500}));
+
+log(store.getState());
 
 const demoState = {
     expenses: [{
@@ -98,4 +120,3 @@ const demoState = {
     }
 };
 //log('demoState: ', demoState);
-
