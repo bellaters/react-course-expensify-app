@@ -15,14 +15,35 @@ const log = console.log;
 
 //Expense Reducers
 const expenseReducerDefaultState = [];
-const expenseReducer = (state = expenseReducerDefaultState, action) => {
+const expensesReducer = (state = expenseReducerDefaultState, action) => {
     switch(action.type) {
         default:
             return state;
     }
 };
-const store = createStore(expenseReducer);
-log(store);
+// Filters Reducers
+// CHALLENGE 92.1 create filterReducer with following default state
+// and register it to store below via combineReducers call
+// text -> '', sortBy -> date, startDate -> undefined, endDate -> undefined
+const filtersReducerDefaultState = {
+    text: '',
+    sortBy: 'date',
+    startDate: undefined,
+    endDate: undefined
+};
+const filterReducer = (state = filtersReducerDefaultState, action) => {
+    switch(action.type) {
+        default:
+            return state;
+    }
+};
+const store = createStore(
+    combineReducers({
+        expenses: expensesReducer,
+        filters: filterReducer
+    })
+);
+log('Initial State of Store: ',store.getState());
 
 
 const demoState = {
@@ -40,4 +61,4 @@ const demoState = {
         endDate: undefined
     }
 };
-log('demoState', demoState);
+log('demoState: ', demoState);
