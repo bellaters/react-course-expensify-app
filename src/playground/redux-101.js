@@ -16,6 +16,15 @@ const decrementCount = (({decrementBy = 1} = {})=>({
     decrementBy: decrementBy
 }));
 
+// CHALLENGE 90.1
+// Create generators setCount and resetCount
+const setCount = (({count = 0} = {}) => ({
+    type: 'SET',
+    count
+}));
+
+const resetCount = ( () => setCount() ) 
+
 const store = createStore((state = {
     count: 0
 }, action) => {
@@ -52,11 +61,13 @@ const unsubscribe = store.subscribe(() => {
 // For example increment, decrement, reset.
 store.dispatch(incrementCount({incrementBy: 5}));
 store.dispatch(decrementCount({decrementBy : 4}));
+store.dispatch(setCount({count: 101}));
 store.dispatch(incrementCount());
-store.dispatch({type: 'SET', count: 101});
+store.dispatch(resetCount());
+store.dispatch(incrementCount());
+store.dispatch(setCount());
 
 
 unsubscribe();
-store.dispatch({type: 'RESET'});
 store.dispatch({type: 'INCREMENT'});
 
