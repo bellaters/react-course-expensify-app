@@ -2,8 +2,7 @@ import {createStore, combineReducers} from 'redux';
 import uuid from 'uuid'
 
 const log = console.log;
-// We will need combineReducers as we have to deal 
-// with a lot of different states and actions:
+
 // ADD_EXPENSE
 const addExpense = (
     {
@@ -22,8 +21,6 @@ const addExpense = (
     }
 });
 // REMOVE_EXPENSE
-// CHALLENGE 93.1
-// create the respective Method
 const removeExpense = ({ id } = {}) => ({
     type: 'REMOVE_EXPENSE',
     id
@@ -64,12 +61,14 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
             return state;
     }
 };
+// Application store
 const store = createStore(
     combineReducers({
         expenses: expensesReducer,
         filters: filtersReducer
     })
 );
+// Log given State
 store.subscribe(()=>{
     log('On Store Dispatch: ',store.getState());
 });
@@ -99,3 +98,4 @@ const demoState = {
     }
 };
 //log('demoState: ', demoState);
+
