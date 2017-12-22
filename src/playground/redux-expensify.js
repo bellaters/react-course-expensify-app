@@ -83,3 +83,19 @@ log(expenseOne);
 
 //log(expenseTwo);
 
+const demoState = {
+    expenses: [{
+        id: 'foo',
+        desciption: 'January Rent',
+        note: 'This was the final payment for the address',
+        amount: 54500, //given in cent ;)
+        createAt: 0
+    }],
+    filters: {
+        text: 'rent',
+        sortBy: 'amount', //date or amount
+        startDate: undefined,
+        endDate: undefined
+    }
+};
+//log('demoState: ', demoState);
