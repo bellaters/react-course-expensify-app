@@ -26,6 +26,10 @@ const setCount = (({count = 0} = {}) => ({
 const resetCount = ( () => ({type: 'RESET'}));
 
 // Reducers
+// 1. Reducers are pure functions, 
+// i.e. method depends ONLY on given arguments 
+// and will not use or manipulate values outside of the method scope!
+// 2. NEVER change state or action, only read them
 const countReducer = (state = {
     count: 0
 }, action) => {
