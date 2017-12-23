@@ -52,7 +52,16 @@ const sortByAmount = () => ({
 });
 
 // SET_START_DATE
+const setStartDate = (date) => ({
+    type: 'SET_START_DATE',
+    startDate: !isNaN(date) ? date : undefined
+});
+
 // SET_END_DATE
+const setEndDate = (date) => ({
+    type: 'SET_END_DATE',
+    endDate: !isNaN(date) ? date : undefined
+});
 
 // Expense Reducers
 const expensesReducerDefaultState = [];
@@ -103,17 +112,24 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
                 sortBy: 'date'
             }
         case 'SORT_BY_AMOUNT':
-        return {
-            ...state,
-            sortBy: 'amount'
-        }
+            return {
+                ...state,
+                sortBy: 'amount'
+            }
+        case 'SET_START_DATE':
+            return {
+                ...state,
+                startDate: action.startDate
+            }
+        case 'SET_END_DATE':
+            return {
+                ...state,
+                endDate: action.endDate
+            }
         default:
             return state;
     }
 };
-
-
-// SORT_BY_AMOUNT / 
 
 // Application store
 const store = createStore(
@@ -131,7 +147,7 @@ const expenseOne = store.dispatch(addExpense({desciption: 'Rent', amount: '100'}
 const expenseTwo = store.dispatch(addExpense({desciption: 'Food', amount: '234'}));
 //log(expenseOne);
 
-store.dispatch(removeExpense({id: expenseOne.expense.id}));
+/* store.dispatch(removeExpense({id: expenseOne.expense.id}));
 store.dispatch(editExpense(expenseTwo.expense.id, {amount: 500}));
 
 store.dispatch(setTextFilter('rent'));
@@ -142,7 +158,14 @@ log(store.getState());
 
 store.dispatch(sortByDate());   // filters.sortBy = 'date'
 log(store.getState());
+ */
 
+store.dispatch(setStartDate(125));
+log('New startDate 125: ',store.getState());
+store.dispatch(setStartDate()); //startDate undefined
+store.dispatch(setEndDate(250));
+log('New endDate 250: ',store.getState());
+store.dispatch(setEndDate());
 
 const demoState = {
     expenses: [{
