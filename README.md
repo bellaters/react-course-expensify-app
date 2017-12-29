@@ -26,14 +26,15 @@ To install a modul with yarn run from project root
  * for example: $yarn add react-redux@5.0.5 
 -> modul will be installed and package.json will be adatpted.
 
+h2. Basics to get it running
+* https://code.visualstudio.com/docs/?dv=osx
+* https://yarnpkg.com/lang/en/
+* https://babeljs.io/
 
 Other Links:
 h2. Additional stuff on top:
 * https://reacttraining.com/react-router/
 * https://github.com/reactjs/react-redux
 * https://regex101.com/
-
-h2. Basics to get it running
-* https://code.visualstudio.com/docs/?dv=osx
-* https://yarnpkg.com/lang/en/
-* https://babeljs.io/
+* https://momentjs.com/
+* https://github.com/airbnb/react-dates
