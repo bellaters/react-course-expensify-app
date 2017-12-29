@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
-import {addExpense} from './actions/expenses';
+import getVisibleExpenses from './selectors/expenses';
+
+import { addExpense } from './actions/expenses';
+import { setTextFilter } from './actions/filters';
 
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
@@ -19,9 +21,15 @@ const store = configureStore();
 
 
 log(store.getState());
-store.dispatch(addExpense({description: 'Water bill'}));
-log(store.getState());
-
+store.subscribe( () => {
+    log('CURRENT STATE: ', store.getState());
+});
+store.dispatch(addExpense({description: 'Water bill', amount: 5000}));
+store.dispatch(addExpense({description: 'Gas bill', amount: 7000}));
+store.dispatch(setTextFilter('bill'));
+const state = store.getState();
+const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
+log('VISIBLE: ', visibleExpenses);
 
 ReactDOM.render(<AppRouter />, document.getElementById('app'));
 
