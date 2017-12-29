@@ -142,6 +142,14 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate}) => {
         const textMatch = expense.desciption.toLowerCase().includes(text.toLowerCase());
 
         return startDateMatch && endDateMatch && textMatch;
+    }).sort( (a,b) => {
+        switch(sortBy){
+            case 'date':
+                return a.createAt < b.createAt ? 1: -1;
+            case 'amount':
+                return a.amount < b.amount ? 1: -1;
+        }
+        // sortBy -> amount 
     });
 };
 
@@ -161,13 +169,14 @@ store.subscribe(()=>{
     log('Current visibleExpenses: ',visibleExpenses);
 });
 
-const expenseOne = store.dispatch(addExpense({desciption: 'Rent', amount: '100', createAt: 1000}));
+const expenseOne = store.dispatch(addExpense({desciption: 'Rent', amount: '100', createAt: 2000}));
 const expenseTwo = store.dispatch(addExpense({desciption: 'Coffee', amount: '300', createAt: -1000}));
 
 //store.dispatch(setStartDate(-200));
 //store.dispatch(setEndDate());
-
-store.dispatch(setTextFilter('re'));
+store.dispatch(sortByAmount());
+//store.dispatch(sortByDate());
+//store.dispatch(setTextFilter('re'));
 
 //log(expenseOne);
 
