@@ -10,6 +10,7 @@ import { setTextFilter } from './actions/filters';
 
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
+import { setTimeout } from 'timers';
 
 const log = console.log;
 const store = configureStore();
@@ -22,6 +23,12 @@ store.subscribe( () => {
 store.dispatch(addExpense({description: 'Water bill', amount: 5000}));
 store.dispatch(addExpense({description: 'Gas bill', amount: 7000}));
 store.dispatch(setTextFilter('bill'));
+
+setTimeout(() => {
+    store.dispatch(setTextFilter('rent'));
+}, 3000);
+
+
 const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 log('VISIBLE: ', visibleExpenses);

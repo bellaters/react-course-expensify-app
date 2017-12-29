@@ -7,12 +7,14 @@ const ExpenseList = (props) => (
         <p>
             {props.expenses.length}
         </p>
+            {props.filters.text}
     </div>
 );
 
 const mapStateToProps = (state) => {
     return {
-        expenses: state.expenses
+        expenses: state.expenses,
+        filters: state.filters
     };
 }; 
 
