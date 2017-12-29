@@ -52,15 +52,15 @@ const sortByAmount = () => ({
 });
 
 // SET_START_DATE
-const setStartDate = (date) => ({
+const setStartDate = (startDate) => ({
     type: 'SET_START_DATE',
-    startDate: !isNaN(date) ? date : undefined
+    startDate: !isNaN(startDate) ? startDate : undefined
 });
 
 // SET_END_DATE
-const setEndDate = (date) => ({
+const setEndDate = (endDate) => ({
     type: 'SET_END_DATE',
-    endDate: !isNaN(date) ? date : undefined
+    endDate: !isNaN(endDate) ? endDate : undefined
 });
 
 // Expense Reducers
