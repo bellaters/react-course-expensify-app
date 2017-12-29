@@ -131,6 +131,12 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
     }
 };
 
+// Get visible expenses
+const getVisibleExpenses = (expenses, filters) => {
+    return expenses;
+};
+
+
 // Application store
 const store = createStore(
     combineReducers({
@@ -140,6 +146,8 @@ const store = createStore(
 );
 // Log given State
 store.subscribe(()=>{
+    const state = store.getState();
+    const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
     log('On Store Dispatch: ',store.getState());
 });
 
