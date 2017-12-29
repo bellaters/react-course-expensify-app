@@ -31,6 +31,7 @@ Other Links:
 h2. Additional stuff on top:
 * https://reacttraining.com/react-router/
 * https://github.com/reactjs/react-redux
+* https://regex101.com/
 
 h2. Basics to get it running
 * https://code.visualstudio.com/docs/?dv=osx
