@@ -54,13 +54,15 @@ const sortByAmount = () => ({
 // SET_START_DATE
 const setStartDate = (startDate) => ({
     type: 'SET_START_DATE',
-    startDate: !isNaN(startDate) ? startDate : undefined
+    //startDate: !isNaN(startDate) ? startDate : undefined
+    startDate
 });
 
 // SET_END_DATE
 const setEndDate = (endDate) => ({
     type: 'SET_END_DATE',
-    endDate: !isNaN(endDate) ? endDate : undefined
+    //endDate: !isNaN(endDate) ? endDate : undefined
+    endDate
 });
 
 // Expense Reducers
@@ -131,9 +133,18 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
     }
 };
 
+
+
 // Get visible expenses
-const getVisibleExpenses = (expenses, filters) => {
-    return expenses;
+const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate}) => {
+    
+    return expenses.filter((expense) => {
+        const startDateMatch = typeof startDate !== 'number' || expense.createAt >= startDate;
+        const endDateMatch = typeof endDate !== 'number' || expense.createAt <= endDate;
+        const textMatch = typeof text !== 'string' || expense.desciption.toLowerCase().includes(text.toLowerCase());
+
+        return startDateMatch && endDateMatch && textMatch;
+    });
 };
 
 
@@ -148,11 +159,18 @@ const store = createStore(
 store.subscribe(()=>{
     const state = store.getState();
     const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-    log('On Store Dispatch: ',store.getState());
+    //log('On Store Dispatch: ',store.getState());
+    log('Current visibleExpenses: ',visibleExpenses);
 });
 
-const expenseOne = store.dispatch(addExpense({desciption: 'Rent', amount: '100'}));
-const expenseTwo = store.dispatch(addExpense({desciption: 'Food', amount: '234'}));
+const expenseOne = store.dispatch(addExpense({desciption: 'Rent', amount: '100', createAt: 1000}));
+const expenseTwo = store.dispatch(addExpense({desciption: 'Food', amount: '234', createAt: -1000}));
+
+//store.dispatch(setStartDate(-200));
+//store.dispatch(setEndDate());
+
+store.dispatch(setTextFilter('rent'));
+
 //log(expenseOne);
 
 /* store.dispatch(removeExpense({id: expenseOne.expense.id}));
@@ -168,12 +186,12 @@ store.dispatch(sortByDate());   // filters.sortBy = 'date'
 log(store.getState());
  */
 
-store.dispatch(setStartDate(125));
+/* store.dispatch(setStartDate(125));
 log('New startDate 125: ',store.getState());
 store.dispatch(setStartDate()); //startDate undefined
 store.dispatch(setEndDate(250));
 log('New endDate 250: ',store.getState());
-store.dispatch(setEndDate());
+store.dispatch(setEndDate()); */
 
 const demoState = {
     expenses: [{
