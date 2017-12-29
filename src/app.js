@@ -28,7 +28,7 @@ store.dispatch(setTextFilter('water'));
 
 setTimeout(() => {
     store.dispatch(setTextFilter('bill'));
-}, 3000);
+}, 1000);
 
 
 const state = store.getState();
