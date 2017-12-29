@@ -13,12 +13,6 @@ import './styles/styles.scss';
 const log = console.log;
 const store = configureStore();
 
-// CHALLENGE 99.1
-// addExpense -> Water bill
-// addExpense -> Gas bill
-// setTextFilter -> bill
-// getVisibleExpenses -> print visibles ones to screen
-
 
 log(store.getState());
 store.subscribe( () => {
