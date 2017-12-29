@@ -22,10 +22,10 @@ store.subscribe( () => {
 });
 store.dispatch(addExpense({description: 'Water bill', amount: 5000, createAt: 2000}));
 store.dispatch(addExpense({description: 'Gas bill', amount: 7000, createAt: -1000}));
-store.dispatch(setTextFilter('bill'));
+store.dispatch(setTextFilter('water'));
 
 setTimeout(() => {
-    store.dispatch(setTextFilter('rent'));
+    store.dispatch(setTextFilter('bill'));
 }, 3000);
 
 
