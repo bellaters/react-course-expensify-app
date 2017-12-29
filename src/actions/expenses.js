@@ -3,7 +3,7 @@ import uuid from 'uuid';
 // ADD_EXPENSE
 export const addExpense = (
     {
-       desciption = '', 
+       description = '', 
        note = '', 
        amount = 0, 
        createAt = 0
@@ -11,7 +11,7 @@ export const addExpense = (
     type: 'ADD_EXPENSE',
     expense: {
         id: uuid(),
-        desciption,
+        description,
         note,
         amount,
         createAt
