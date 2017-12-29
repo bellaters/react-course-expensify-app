@@ -1,6 +1,6 @@
 import {createStore, combineReducers} from 'redux';
 import expensesReducer from '../reducers/expenses';
-import expensesReducer from '../reducers/filters';
+import filtersReducer from '../reducers/filters';
 
 // Application store
 export default () => {
