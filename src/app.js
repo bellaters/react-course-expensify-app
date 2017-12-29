@@ -20,8 +20,8 @@ log(store.getState());
 store.subscribe( () => {
     log('CURRENT STATE: ', store.getState());
 });
-store.dispatch(addExpense({description: 'Water bill', amount: 5000}));
-store.dispatch(addExpense({description: 'Gas bill', amount: 7000}));
+store.dispatch(addExpense({description: 'Water bill', amount: 5000, createAt: 2000}));
+store.dispatch(addExpense({description: 'Gas bill', amount: 7000, createAt: -1000}));
 store.dispatch(setTextFilter('bill'));
 
 setTimeout(() => {
