@@ -12,7 +12,8 @@ export default class ExpenseForm extends React.Component {
         note: '',
         amount: '',
         createdAt: moment(),
-        calendarFocused: false
+        calendarFocused: false,
+        error: ''
     };
     onNoteChange = (e) => {
         const note = e.target.value;
@@ -24,20 +25,36 @@ export default class ExpenseForm extends React.Component {
     };
     onAmountChange = (e) => {
         const amount = e.target.value;
-        if(amount.match(/^\d*(\.\d{0,2})?$/)){
+        if(!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)){
             this.setState(()=>({amount}));
         }
     };
     onDateChange = (createdAt) => {
-        this.setState(() => ({createdAt}));
+        if(createdAt){
+            this.setState(() => ({createdAt}));
+        }
     };
     onFocusChange = ({ focused }) => {
         this.setState(() => ({ calendarFocused : focused}));
     };
+    onSubmit = (e) => {
+        e.preventDefault();
+        if(!this.state.description || !this.state.amount){
+            // Set error state t o 'Please provide adescription and amount.'
+            const error = 'Please provide adescription and amount.';
+            this.setState( () => ({error}));
+        } else {
+            // clear tmp error
+            this.setState(() => ({error: ''}));
+            console.log('submitted!');
+        }
+    }
     render() {
         return (
             <div>
-                <form>
+                {this.state.error && 
+                    <p>{this.state.error}</p>}
+                <form onSubmit={this.onSubmit}>
                     <input 
                         type="text"
                         placeholder="Description"
@@ -46,7 +63,7 @@ export default class ExpenseForm extends React.Component {
                         onChange={this.onDescriptionChange}
                     />
                     <input 
-                        type="number"
+                        type="text"
                         placeholder="Amount"
                         value={this.state.amount}
                         onChange={this.onAmountChange}
