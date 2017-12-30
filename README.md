@@ -36,7 +36,7 @@ To run your test cases run from project root
 * $ yarn test
 * NOTE: you need to have installed jest
 ** your test files should be in src/tests and end with '.test.js'
-** run yarn test --  --watch 
+** $ yarn test --  --watch 
 Watch Usage
  › Press a to run all tests.
  › Press p to filter by a filename regex pattern.
