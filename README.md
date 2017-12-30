@@ -31,6 +31,12 @@ h2. Basics to get it running
 * https://yarnpkg.com/lang/en/
 * https://babeljs.io/
 
+h2. Testing
+To run your test cases run from project root
+* $ yarn test
+* NOTE: you need to have installed jest
+** your test files should be in src/tests and end with '.test.js'
+
 Other Links:
 h2. Additional stuff on top:
 * https://reacttraining.com/react-router/
