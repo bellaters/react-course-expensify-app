@@ -23,10 +23,37 @@ test('should setup edit expense action object',() => {
     });
 });
 
-// CHALLENGE 113.1
-// Setup test case 
-// Call editExpense { note: 'new note value'}
-// Make an assertion
+test('should setup add expense action with provided values',() => {
+    const expenseData = {
+        description: 'Rent',
+        amount: 109500,
+        createAt: 1000,
+        note: 'This was last months rent'
+    };
+    const action = addExpense(expenseData);
+    expect(action).toEqual({
+        type: 'ADD_EXPENSE',
+        expense: {
+            ...expenseData,
+            id: expect.any(String)
+        }
+    });
+});
+
+test('should setup add expense action with default values',() => {
+    const action = addExpense();
+    expect(action).toEqual({
+        type: 'ADD_EXPENSE',
+        expense: {
+            id: expect.any(String),
+            description: '', 
+            note: '', 
+            amount: 0, 
+            createAt: 0
+        }
+    });
+});
+
 
 
 
