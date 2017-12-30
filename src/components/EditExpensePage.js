@@ -23,9 +23,6 @@ const EditExpensePage = (props) => {
     );
 };
 
-// CHALLENGE 108.2
-// Remove expense via dispatch and then redirect to dashboard
-
 const mapStateToProps = (state,props) => {
     return {
         expense:state.expenses.find((expense) => expense.id === props.match.params.id)
