@@ -48,7 +48,10 @@ test('should set endDate filter', () => {
 }); 
 
 const getDefaultStateWith = (valuesToSet = {}) => {
-    return Object.assign({},defaultState,valuesToSet);
+    return {
+        ...defaultState,
+        ...valuesToSet
+    }
 };
 
 const defaultState = {
