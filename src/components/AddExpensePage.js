@@ -16,10 +16,8 @@ const AddExpensePage = (props) => (
     </div>
 );
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onSubmit: (expense) => dispatch(addExpense(expense))
-    };
-}
+const mapDispatchToProps = (dispatch) => ({
+    onSubmit: (expense) => dispatch(addExpense(expense))
+});
 
 export default connect(undefined, mapDispatchToProps)(AddExpensePage);
