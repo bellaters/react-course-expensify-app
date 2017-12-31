@@ -1,7 +1,30 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { ExpenseListFilters } from '../../components/ExpenseListFilters';
-import expenses from '../fixtures/expenses';
+import { filters, altFilters } from '../fixtures/filters';
+
+let setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate, wrapper;
+
+beforeEach( () => {
+    setTextFilter = jest.fn();
+    sortByDate = jest.fn();
+    sortByAmount = jest.fn();
+    setStartDate = jest.fn();
+    setEndDate = jest.fn();
+    wrapper = shallow(
+        <ExpenseListFilters 
+            filters = {filters}
+            setTextFilter = { setTextFilter}
+            sortByAmount = { sortByAmount }
+            setStartDate = { setStartDate}
+            setEndDate = { setEndDate }
+        />
+    );
+});
+
+test(' should render ExpenseListFilters correctly', () => {
+    expect(wrapper).toMatchSnapshot();
+});
 
 test(' should ', () => {
 
