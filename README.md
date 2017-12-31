@@ -4,7 +4,8 @@
     1. Go to project root
     2. run ``` $ yarn add live-server babel-cli@6.24.1 ```
 
-    3. run ``` $ yarn run dev-server ```
+    3. * run ``` $ yarn run dev-server ``` for local developer mode
+        * run ```$ yarn run build:prod ``` for prod mode
 
 ### RERUN dev-server whenever YOU EDIT 
         webpack.config.js
