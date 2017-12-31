@@ -14,24 +14,20 @@ import 'react-dates/lib/css/_datepicker.css';
 
 import { setTimeout } from 'timers';
 
-const log = console.log;
 const store = configureStore();
 
-
-log(store.getState());
 /* 
 store.subscribe( () => {
     log('CURRENT STATE: ', store.getState());
 });
  */
-store.dispatch(addExpense({description: 'Water bill', amount: 5000, createAt: 2000}));
+
+/* store.dispatch(addExpense({description: 'Water bill', amount: 5000, createAt: 2000}));
 store.dispatch(addExpense({description: 'Gas bill', amount: 7000, createAt: -1000}));
 store.dispatch(addExpense({description: 'Rent', amount: 109500, createAt: 2000}));
+ */
 
-const state = store.getState();
-const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-log('VISIBLE: ', visibleExpenses);
-
+console.log('test');
 
 const jsx = (
     <Provider store={store}>
