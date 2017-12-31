@@ -11,3 +11,15 @@ exports[` 1`] = `
   </Link>
 </div>
 `;
+
+exports[` should render NotFoundPage correctly 1`] = `
+<div>
+  404! - 
+  <Link
+    replace={false}
+    to="/"
+  >
+    Go Home!
+  </Link>
+</div>
+`;
