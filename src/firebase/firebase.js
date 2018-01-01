@@ -13,30 +13,58 @@ firebase.initializeApp(config);
 // Getting firebase
 const database = firebase.database();
 
-// Setup "expenses" with three items, i.e. push our dummy data to firebase
+// child_removed
+database.ref('expenses').on('child_removed', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+// child_changed
+database.ref('expenses').on('child_removed', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+/* 
+database.ref('expenses')
+    .on('value', (snapshot) => {
+        const expenses = [];
+        snapshot.forEach( (childSnapshot) => {
+            expenses.push({
+                id : childSnapshot.key,
+                ...childSnapshot.val()
+            });
+        });
+        console.log(expenses);
+    });
+ */
+
+/* 
+database.ref('expenses')
+    .once('value')
+    .then( (snapshot) => {
+        console.log(snapshot.val());
+        const expenses = [];
+
+        snapshot.forEach( (childSnapshot) => {
+            expenses.push({
+                id : childSnapshot.key,
+                ...childSnapshot
+            });
+        });
+        console.log(expenses);
+        
+    });
+ */
+
+/* 
 database.ref('expenses').push({
-    id: '1',
     description: 'Gum',
     note: '',
     amount: 195,
     createAt: 0 
 });
-database.ref('expenses').push({
-    id: '2',
-    description: 'Rent',
-    note: '',
-    amount: 109500,
-    createAt: 0 
-});
-database.ref('expenses').push({
-    id: '3',
-    description: 'Credit Card',
-    note: '',
-    amount: 4500,
-    createAt: 0
-});
+ */
 
-/* 
+ /* 
 database.ref('location')
     .once('value')
     .then( (snapshot) => {
