@@ -12,6 +12,15 @@ messagingSenderId: "1073071908734"
 firebase.initializeApp(config);
 // Getting firebase
 const database = firebase.database();
+database.ref('isSingle')
+    .remove()
+    .then( () => {
+        console.log('isSingle was removed.');
+    }).catch( (e) => {
+        console.log('gnaaaaa... : ', e);
+    });
+
+/* 
 database.ref().set({
     name: 'Foo Bar', 
     age: 40,
@@ -25,21 +34,4 @@ database.ref().set({
 }).catch( (e) => {
     console.log('This failed.', e);
 });
-
-// database.ref().set('this is my data');
-
-//database.ref('age').set(27);
-//database.ref('location/city').set('New York');
-
-database.ref('attributes').set({
-    height: 170,
-    weight: 70
-}).then( () => {
-    console.log('Update works');
-}).catch( (e) => {
-    console.log('Update failed.', e);
-});;
-
-// attributes
-//  height
-//  weight
+ */
