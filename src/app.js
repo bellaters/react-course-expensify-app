@@ -27,7 +27,7 @@ store.dispatch(addExpense({description: 'Gas bill', amount: 7000, createAt: -100
 store.dispatch(addExpense({description: 'Rent', amount: 109500, createAt: 2000}));
  */
 
-console.log('neu');
+console.log('test');
 
 const jsx = (
     <Provider store={store}>

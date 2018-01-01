@@ -1,6 +1,6 @@
 ## GETTING STARTED:
 * DO NOT MISS THE .babelrc at project root!
-* To get the app running do :
+* To get the app running :
     1. Go to project root
     2. run ``` $ yarn add live-server babel-cli@6.24.1 ```
 
