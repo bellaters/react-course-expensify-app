@@ -1,16 +1,37 @@
- import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 
- const config = {
-    apiKey: "AIzaSyDXIsaMd6uTvn5tHUoOmrxrw2w2_Prs_Kk",
-    authDomain: "expensify-d4907.firebaseapp.com",
-    databaseURL: "https://expensify-d4907.firebaseio.com",
-    projectId: "expensify-d4907",
-    storageBucket: "expensify-d4907.appspot.com",
-    messagingSenderId: "1073071908734"
-  };
+const config = {
+apiKey: "AIzaSyDXIsaMd6uTvn5tHUoOmrxrw2w2_Prs_Kk",
+authDomain: "expensify-d4907.firebaseapp.com",
+databaseURL: "https://expensify-d4907.firebaseio.com",
+projectId: "expensify-d4907",
+storageBucket: "expensify-d4907.appspot.com",
+messagingSenderId: "1073071908734"
+};
 
-  firebase.initializeApp(config);
-  // Getting firebase
-  firebase.database().ref().set({
-    name: 'Foo Bar'
+firebase.initializeApp(config);
+// Getting firebase
+const database = firebase.database();
+database.ref().set({
+    name: 'Foo Bar', 
+    age: 40,
+    isSingle: false,
+    location: {
+        city: 'Philadelphia',
+        country: 'United States'
+    }
 });
+
+// database.ref().set('this is my data');
+
+database.ref('age').set(27);
+database.ref('location/city').set('New York');
+
+database.ref('attributes').set({
+    height: 170,
+    weight: 70
+});
+
+// attributes
+//  height
+//  weight
