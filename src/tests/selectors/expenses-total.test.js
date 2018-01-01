@@ -1,5 +1,5 @@
 import selectExpensesTotal from '../../selectors/expenses-total';
-// see '../fixtures/expenses.js'
+// see nearly the same '../fixtures/expenses.js'
 import moment from 'moment';
 const expenses = [{
     id: '1',
@@ -11,7 +11,7 @@ const expenses = [{
     id: '2',
     description: 'Rent',
     note: '',
-    amount: 100000,
+    amount: 109500,
     createAt: moment(0).subtract(4,'days').valueOf() 
 }, {
     id: '3',
@@ -21,19 +21,17 @@ const expenses = [{
     createAt: moment(0).add(4,'days').valueOf() 
 }];
 
-const getExpensesTotal = (expensesToBeSummedUpByAmount) => {
-    const expenseTotal = undefined;
+const getExpensesTotal = (exps = []) => {
+    const expenseTotal = exps.reduce( (prevTotal, expense) => {
+        return prevTotal + expense.amount;
+    }, 0);
 
     return expenseTotal;
 };
 
-// create function getExpensesTotal, 
-// which calculates total sum of amounts
 const total = getExpensesTotal(expenses); // look into map and reduce
 console.log(total); //114195
 
-// Tests to create 
-// --------------- 
 test(' should return 0 if no expense ', () => {
     const expensesToTest = [];
     const expenseTotal = getExpensesTotal(expensesToTest);
