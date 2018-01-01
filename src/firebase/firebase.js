@@ -29,9 +29,7 @@ database.ref().set({
 
 database.ref().update({
     job: 'Manager',
-    location: {
-        city: 'New York'
-    }
+    'location/city': 'New York'
 });
 
 /* 
