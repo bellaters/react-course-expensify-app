@@ -14,6 +14,8 @@ import 'react-dates/lib/css/_datepicker.css';
 
 import { setTimeout } from 'timers';
 
+import moment from 'moment';
+
 const store = configureStore();
 
 /* 
@@ -22,18 +24,17 @@ store.subscribe( () => {
 });
  */
 
-/* store.dispatch(addExpense({description: 'Water bill', amount: 5000, createAt: 2000}));
-store.dispatch(addExpense({description: 'Gas bill', amount: 7000, createAt: -1000}));
-store.dispatch(addExpense({description: 'Rent', amount: 109500, createAt: 2000}));
- */
-
-console.log('test');
-
-const jsx = (
+ const jsx = (
     <Provider store={store}>
         <AppRouter />
     </Provider>
 );
 
 ReactDOM.render(jsx, document.getElementById('app'));
+
+// add some fake data
+store.dispatch(addExpense({description: 'Water bill', amount: 5000, createAt: moment()}));
+store.dispatch(addExpense({description: 'Gas bill', amount: 7000, createAt: moment()}));
+store.dispatch(addExpense({description: 'Rent', amount: 109500, createAt: moment()}));
+
 

@@ -7,15 +7,16 @@ import selectExpensesTotal from '../selectors/expenses-total';
 export const ExpensesSummary = (props) => (
     <div>
         <p>
-        {`Viewing ${props.expenses.length} expenses 
-        totalling ${selectExpensesTotal(props.expenses)}`}
+        {`Viewing ${props.count} expenses 
+        totalling ${props.total}`}
         </p>
     </div>
 );
 
 const mapStateToProps = (state) => {
     return {
-        expenses: selectExpensesTotal(state.expenses, state.filters)
+        count: state.expenses.length,
+        total: selectExpensesTotal(state.expenses)
     };
 }; 
 
