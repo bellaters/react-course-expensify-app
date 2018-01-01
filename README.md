@@ -55,6 +55,7 @@ To run your test cases run from project root
 * https://github.com/airbnb/react-dates
 * http://expressjs.com/
 * https://www.heroku.com/
+* https://firebase.google.com/
 
 ## Heroku
 after setup account at heroku and install heroku-cli, console:
