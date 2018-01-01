@@ -16,6 +16,11 @@ const database = firebase.database();
 database.ref().set({
     name: 'Foo Bar', 
     age: 42,
+    stressLevel: 6,
+    job: {
+        title: 'Software Developer',
+        company: 'Google'
+    },
     isSingle: false,
     location: {
         city: 'Philadelphia',
@@ -28,8 +33,9 @@ database.ref().set({
 });
 
 database.ref().update({
-    job: 'Manager',
-    'location/city': 'New York'
+    stressLevel: 9,
+    'job/company': 'Amazon',
+    'location/city': 'Seattle'
 });
 
 /* 
