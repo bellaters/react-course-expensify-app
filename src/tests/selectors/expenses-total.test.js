@@ -21,14 +21,35 @@ const expenses = [{
     createAt: moment(0).add(4,'days').valueOf() 
 }];
 
+const getExpensesTotal = (expensesToBeSummedUpByAmount) => {
+    const expenseTotal = undefined;
+
+    return expenseTotal;
+};
+
 // create function getExpensesTotal, 
 // which calculates total sum of amounts
 const total = getExpensesTotal(expenses); // look into map and reduce
 console.log(total); //114195
 
-
 // Tests to create 
-// ---------------
-// should return 0 if no expense
-// should correctly add up a single expense
-// should correctly add up multiple expenses
+// --------------- 
+test(' should return 0 if no expense ', () => {
+    const expensesToTest = [];
+    const expenseTotal = getExpensesTotal(expensesToTest);
+    expect(expenseTotal).toBe(0);
+});
+
+test(' should correctly add up a single expense', () => {
+    const expensesToTest = [ expenses[0] ];
+    const expenseAmount = expenses[0].amount;
+    const expenseTotal = getExpensesTotal(expensesToTest);
+    expect(expenseTotal).toBe(expenseAmount);
+});
+
+test(' should correctly add up multiple expenses', () => {
+    const expensesToTest = expenses;
+    const expensesSumOfAmounts = 114195; // manually calculated ;)
+    const expenseTotal = getExpensesTotal(expensesToTest);
+    expect(expenseTotal).toBe(expensesSumOfAmounts);
+});
