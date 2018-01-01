@@ -14,7 +14,9 @@ import 'react-dates/lib/css/_datepicker.css';
 
 import { setTimeout } from 'timers';
 
+// TODO: clear this imports 
 import moment from 'moment';
+import './firebase/firebase';
 
 const store = configureStore();
 
@@ -32,9 +34,13 @@ store.subscribe( () => {
 
 ReactDOM.render(jsx, document.getElementById('app'));
 
+
+
 // add some fake data
 store.dispatch(addExpense({description: 'Water bill', amount: 5000, createAt: moment()}));
 store.dispatch(addExpense({description: 'Gas bill', amount: 7000, createAt: moment()}));
 store.dispatch(addExpense({description: 'Rent', amount: 109500, createAt: moment()}));
+// connect with firebase
+
 
 
