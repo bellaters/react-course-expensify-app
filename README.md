@@ -55,3 +55,19 @@ To run your test cases run from project root
 * https://github.com/airbnb/react-dates
 * http://expressjs.com/
 * https://www.heroku.com/
+
+## Heroku
+after setup account at heroku and install heroku-cli, console:
+* $ heroku login   -> login with email and password of your (fresh) account
+* $  heroku create react-course-foo-expensify-app
+Creating ⬢ react-course-foo-expensify-app... done
+https://react-course-foo-expensify-app.herokuapp.com/ | https://git.heroku.com/react-course-foo-expensify-app.git
+-> New heroku repository!
+
+* Push to heroku repository
+	* $ git push heroku master
+	--> see your applications via 
+	* $ heroku open
+	* For trouble solving use 
+	* $ heroku logs
+	
