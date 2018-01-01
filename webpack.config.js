@@ -1,10 +1,12 @@
 //take a look at https://webpack.js.org/
 
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = (env) => {
     const isProduction = env === 'production';
-    
+    const CSSExtract = new ExtractTextPlugin('styles.css');
+
     console.log(env);
     return {
         entry: './src/app.js',
@@ -21,14 +23,17 @@ module.exports = (env) => {
                 exclude: /node_modules/
             }, {
                 test: /\.s?css$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ]
+                use: CSSExtract.extract({
+                    use: [
+                        'css-loader',
+                        'sass-loader'       
+                    ]
+                })
             }]
         },
-
+        plugins: [
+            CSSExtract
+        ],
         devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
         devServer: {
             contentBase: path.join(__dirname, "public"),
