@@ -28,10 +28,10 @@ database.ref().set({
 });
 
 database.ref().update({
-    name: 'Mystery',
-    age: 24,
-    job: 'Software Developer',
-    isSingle: null
+    job: 'Manager',
+    location: {
+        city: 'New York'
+    }
 });
 
 /* 
