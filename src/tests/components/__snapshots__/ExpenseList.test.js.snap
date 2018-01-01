@@ -19,7 +19,7 @@ exports[` should render ExpenseList with expenses 1`] = `
     note=""
   />
   <ExpenseListItem
-    amount={100000}
+    amount={109500}
     createAt={-345600000}
     description="Rent"
     id="2"

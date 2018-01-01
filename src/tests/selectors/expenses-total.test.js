@@ -1,32 +1,8 @@
 import selectExpensesTotal from '../../selectors/expenses-total';
-// see nearly the same '../fixtures/expenses.js'
-import moment from 'moment';
-const expenses = [{
-    id: '1',
-    description: 'Gum',
-    note: '',
-    amount: 195,
-    createAt: 0 
-}, {
-    id: '2',
-    description: 'Rent',
-    note: '',
-    amount: 109500,
-    createAt: moment(0).subtract(4,'days').valueOf() 
-}, {
-    id: '3',
-    description: 'Credit Card',
-    note: '',
-    amount: 4500,
-    createAt: moment(0).add(4,'days').valueOf() 
-}];
+import expenses from '../fixtures/expenses';
 
-const getExpensesTotal = (exps = []) => {
-    const expenseTotal = exps.reduce( (prevTotal, expense) => {
-        return prevTotal + expense.amount;
-    }, 0);
-
-    return expenseTotal;
+const getExpensesTotal = (exps) => {
+    return selectExpensesTotal(exps);
 };
 
 const total = getExpensesTotal(expenses); // look into map and reduce
