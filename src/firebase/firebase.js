@@ -13,7 +13,25 @@ firebase.initializeApp(config);
 // Getting firebase
 const database = firebase.database();
 
-database.ref().set({
+database.ref('location')
+    .once('value')
+    .then( (snapshot) => {
+        const val = snapshot.val();
+        console.log(val);
+    })
+    .catch( (e) => {
+        console.log('Error fetching data');
+    });
+
+database.ref().on('value', (snapshot) => {
+    console.log(snapshot.val());
+});
+
+setTimeout( () => {
+    database.ref('age').set(28);
+}, 3500);
+
+/* database.ref().set({
     name: 'Foo Bar', 
     age: 42,
     stressLevel: 6,
@@ -31,13 +49,14 @@ database.ref().set({
 }).catch( (e) => {
     console.log('This failed.', e);
 });
-
+ */
+/* 
 database.ref().update({
     stressLevel: 9,
     'job/company': 'Amazon',
     'location/city': 'Seattle'
 });
-
+ */
 /* 
 database.ref('isSingle')
     .remove()
