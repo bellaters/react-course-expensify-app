@@ -43,7 +43,7 @@ export const startRemoveExpense = ({ id } = {} ) => {
         return database.ref(`expenses/${id}`).remove().then( () => {
             dispatch(removeExpense({id}));
         }).catch( (e) => {
-            console.log('something is wrong: ', e);
+            console.log('something is wrong with start remove expense: ', e);
         });
     };
 };
@@ -56,6 +56,20 @@ export const editExpense = (id, update = {} ) => ({
         id
     }
 });
+
+// 1. Create startEditExpense (same call signature as editExpense)
+// 2. Test startEditExpense with ' should edit expense from firebase'
+// 3. Use startEditExpense in EditExpensePage instead of editExpense
+// 4. Adjust EditExpensePage tests
+export const startEditExpense = ( id, update = {} ) => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).update(update).then( () => {
+            dispatch(editExpense(id, update));
+        }).catch( (e) => {
+            console.log('something is wrong with start edit expense: ', e);
+        });
+    };
+};
 
 // SET_EXPENSES
 export const setExpenses = (expenses) => ({
