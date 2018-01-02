@@ -59,16 +59,25 @@ To run your test cases run from project root
 
 ## Heroku
 after setup account at heroku and install heroku-cli, console:
-* $ heroku login   -> login with email and password of your (fresh) account
-* $  heroku create react-course-foo-expensify-app
+* ```$ heroku login```   -> login with email and password of your (fresh) account
+* ```$  heroku create react-course-foo-expensify-app ```
 Creating ⬢ react-course-foo-expensify-app... done
 https://react-course-foo-expensify-app.herokuapp.com/ | https://git.heroku.com/react-course-foo-expensify-app.git
 -> New heroku repository!
 
 * Push to heroku repository
-	* $ git push heroku master
-	--> see your applications via 
-	* $ heroku open
-	* For trouble solving use 
-	* $ heroku logs
+        * ```$ git push heroku master```
+        --> see your applications via 
+        * ```$ heroku open```
+        * For trouble solving use 
+        * ```$ heroku logs```
+
+## Firebase
+you need to have a firebase account. After setup, provide the respective credentials for your development- and test-db via ```<project-root>/.env.development``` and ```<project-root>/.env.development```. The test-db is used for providing and testing data via test-runs. The development-db is used during your local work and from your heroku app. To configure heroku use ```heroku config:set KEY=value```. The following values should be provided:
+* FIREBASE_API_KEY
+* FIREBASE_AUTH_DOMAIN
+* FIREBASE_DATABASE_URL
+* FIREBASE_PROJECT_ID
+* FIREBASE_STORAGE_BUCKET
+* FIREBASE_MESSAGING_SENDER_ID
 	

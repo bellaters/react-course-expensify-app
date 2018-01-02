@@ -54,6 +54,7 @@ test('should edit an expense', () => {
     expect(state[0].description).toBe('New Description');
 });
 
+// TODO: Fix this with update data, which will not used!
 test('should not edit expense if expense not found ', () => {
     const action = {
         type: 'EDIT_EXPENSIVE',
@@ -64,3 +65,20 @@ test('should not edit expense if expense not found ', () => {
     const state = expensesReducer(expenses,action);
     expect(state).toEqual(expenses);
  });
+
+ test(' should set expenses', () => {
+    const action = {
+        type: 'SET_EXPENSES',
+        expenses: [expenses[1]]
+    }
+    const state = expensesReducer(expenses, action);
+    expect(state).toEqual([expenses[1]]);
+ })
+
+ /* Action:
+ // SET_EXPENSES
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses 
+});
+*/
