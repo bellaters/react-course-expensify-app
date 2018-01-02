@@ -5,7 +5,7 @@ import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import getVisibleExpenses from './selectors/expenses';
 
-import { addExpense } from './actions/expenses';
+import { startSetExpenses } from './actions/expenses';
 import { setTextFilter } from './actions/filters';
 
 import 'normalize.css/normalize.css';
@@ -33,8 +33,12 @@ store.subscribe( () => {
     </Provider>
 );
 
-ReactDOM.render(jsx, document.getElementById('app'));
+ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
+store.dispatch(startSetExpenses()).then( () =>{
+    ReactDOM.render(jsx, document.getElementById('app'));  
+});
 
+//ReactDOM.render(jsx, document.getElementById('app'));
 
 
 // add some fake data
