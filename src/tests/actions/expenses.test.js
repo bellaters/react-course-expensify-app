@@ -115,8 +115,6 @@ test(' should fetch the expenses from firebase',  (done) => {
 test(' should remove expenses from firebase', (done) => {
     const store = createMockStore({});
     const idToBeRemoved = expenses[0].id
-    console.log('idToBeRemoved : ', idToBeRemoved);
-    
     store.dispatch(startRemoveExpense({id: idToBeRemoved})).then( () => {
         const actions = store.getActions();
         expect(actions[0]).toEqual({
