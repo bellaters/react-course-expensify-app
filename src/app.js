@@ -17,6 +17,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import { setTimeout } from 'timers';
 import moment from 'moment';
 import './firebase/firebase';
+//import './playground/promises';
 
 const store = configureStore();
 
