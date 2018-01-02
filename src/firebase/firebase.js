@@ -15,6 +15,14 @@ const database = firebase.database();
 
 export {firebase, database as default};
 
+/*
+const idToBeUpdated = '-L1oYGym13j3kTJSQt2s';
+database.ref(`expenses/${idToBeUpdated}`).once('value')
+    .then( (snapshot) => {
+        console.log('from db: ', snapshot.val()); 
+    });
+*/
+
 /* 
 // child_removed
 database.ref('expenses').on('child_removed', (snapshot) => {
