@@ -54,40 +54,15 @@ export const setExpenses = (expenses) => ({
 export const startSetExpenses = (expensesData = {}) => {
     /* structure from startAddExpense */
     return (dispatch) => {
-        
         return database.ref('expenses').once('value').then( (snapshot) => {
             const expenses = [];
             snapshot.forEach( (childSnapshot) => {
-                console.log('Child will added : ', childSnapshot);
-                
                 expenses.push({
                     id : childSnapshot.key,
                     ...childSnapshot.val()
                 });
             });
-
-            console.log(expenses)
             dispatch(setExpenses(expenses));
         });
     };
 };
-
-// Example from firebase.js:
-/* 
-database.ref('expenses')
-    .once('value')
-    .then( (snapshot) => {
-        console.log(snapshot.val());
-        const expenses = [];
-
-        snapshot.forEach( (childSnapshot) => {
-            expenses.push({
-                id : childSnapshot.key,
-                ...childSnapshot
-            });
-        });
-        console.log(expenses);
-        
-    });
- */
-
