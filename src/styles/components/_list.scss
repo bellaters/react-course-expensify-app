@@ -1,7 +1,13 @@
-.list-header{
+.list-header {
     background: $off-white;
     border: 1px solid darken($off-white, 7%);
     color: $grey;
+    display: flex;
+    justify-content: space-between;
+    padding: $s-size $m-size;
+}
+
+.list-item {
     display: flex;
     justify-content: space-between;
     padding: $s-size $m-size;
