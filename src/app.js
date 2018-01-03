@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import AppRouter from './routers/AppRouter';
+import AppRouter, {history} from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import getVisibleExpenses from './selectors/expenses';
 
@@ -21,30 +21,36 @@ import moment from 'moment';
 
 const store = configureStore();
 
-/* 
-store.subscribe( () => {
-    log('CURRENT STATE: ', store.getState());
-});
- */
-
  const jsx = (
     <Provider store={store}>
         <AppRouter />
     </Provider>
 );
 
-
+// render only ones! I.e. make a singelton
+let hasRendered = false;
+const renderApp = () => {
+    if(!hasRendered){
+        ReactDOM.render(jsx, document.getElementById('app'));  
+        hasRendered = true;
+    }
+};
 
 ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
-store.dispatch(startSetExpenses()).then( () =>{
-    ReactDOM.render(jsx, document.getElementById('app'));  
-});
 
 firebase.auth().onAuthStateChanged( (user) => {
     if(user){
-        console.log('log in');
+        //console.log('log in');
+        store.dispatch(startSetExpenses()).then( () =>{
+            renderApp();
+            if(history.location.pathname === '/'){
+                history.push('/dashboard');
+            }
+        });
     } else {
-        console.log('log out');
+        //console.log('log out');
+        renderApp();
+        history.push('/');
     }
 });
 
