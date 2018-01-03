@@ -5,21 +5,22 @@ import AddExpensePage from '../components/AddExpensePage';
 import EditExpensePage from '../components/EditExpensePage';
 import ExpenseDashboardPage from '../components/ExpenseDashboardPage';
 import HelpPage from '../components/HelpPage';
-import NotFoundPage from '../components/NotFoundPage';
 import Header from '../components/Header';
+import LoginPage from '../components/LoginPage';
+import NotFoundPage from '../components/NotFoundPage';
 
 const AppRouter = () => (
     <BrowserRouter>
         <div>
-            <Header />
+            <h1>Expensify</h1>
             <Switch>
-            <Route path="/" component={ExpenseDashboardPage} exact={true}/>
+            <Route path="/" component={LoginPage} exact={true}/>
+            <Route path="/dashboard" component={ExpenseDashboardPage}/>
             <Route path="/create" component={AddExpensePage}/>
             <Route path="/edit/:id" component={EditExpensePage}/>
             <Route path="/help" component={HelpPage}/>
             <Route component={NotFoundPage} />
             </Switch>
-            <a href="http://localhost:8080/pagennotexist"> Go to NotFoundPage </a>
         </div>
     </BrowserRouter>
 );
