@@ -7,3 +7,11 @@ exports[` should render ExpenseListItem correctly 1`] = `
   </button>
 </div>
 `;
+
+exports[` should render LoginPage correctly 1`] = `
+<div>
+  <button>
+    Login
+  </button>
+</div>
+`;
