@@ -6,7 +6,7 @@ exports[` should render EditExpensePage correctly 1`] = `
     expense={
       Object {
         "amount": 195,
-        "createAt": 0,
+        "createdAt": 0,
         "description": "Gum",
         "id": "1",
         "note": "",

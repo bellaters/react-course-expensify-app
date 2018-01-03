@@ -13,8 +13,8 @@ const defaultAuthState = { auth: { uid }};
 // Load our test data '../fixtures/expenses' to our test db
 beforeEach( (done) => {
     const expensesData = {};
-    expenses.forEach( ({ id, description, note, amount, createAt }) => {
-        expensesData[id] = { description, note, amount, createAt };
+    expenses.forEach( ({ id, description, note, amount, createdAt }) => {
+        expensesData[id] = { description, note, amount, createdAt };
     });
     database.ref(`users/${uid}/expenses`).set(expensesData).then( () => done());
 });
@@ -52,7 +52,7 @@ test(' should add expense to database and store', (done) => {
         description: 'Coffee',
         amount: 450,
         note: 'blub',
-        createAt: 1000
+        createdAt: 1000
     };
     store.dispatch(startAddExpense(expenseData)).then( () => {
         const actions = store.getActions();
@@ -76,7 +76,7 @@ test(' should add expense with defaults to database and store', (done) => {
         description : '', 
         note : '', 
         amount : 0, 
-        createAt : 0
+        createdAt : 0
     };
     store.dispatch(startAddExpense()).then( () => {
         const actions = store.getActions();
@@ -106,7 +106,7 @@ test(' should fetch the expenses from firebase',  (done) => {
     const store = createMockStore(defaultAuthState);
     store.dispatch(startSetExpenses()).then( ()=> {
         const actions = store.getActions();
-        expect(actions[0]).toEqual({
+        expect(actions[0]).toEqual({    
             type: 'SET_EXPENSES',
             expenses
         });
@@ -136,7 +136,7 @@ test(' should edit expense from firebase', (done) => {
     const update = {
         description : 'My Update', 
         note : 'I am a test update', 
-        createAt : 0,
+        createdAt : 0,
         amount : 100000
     };
     store.dispatch(startEditExpense( id, update )).then( () => {
