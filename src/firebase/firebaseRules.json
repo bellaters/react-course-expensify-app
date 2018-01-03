@@ -9,18 +9,26 @@
                 "expenses": {
                     "$expense_id": {
                         ".validate": "newData.hasChildren(['description','note','amount','createdAt'])",
-                        "description": {},
-                        "note": {},
-                        "amount": {},
-                        "createdAt": {},
+                        "description": {
+                            ".validate": "newData.isString() && newData.val().length > 0"
+                        },
+                        "note": {
+                            ".validate": "newData.isString()"
+                        },
+                        "amount": {
+                            ".validate": "newData.isNumber()"
+                        },
+                        "createdAt": {
+                            ".validate": "newData.isNumber()"
+                        },
                         "$other": {
                             ".validate":false
                         }
                     }
+                },
+                "$other": {
+                    ".validate":false
                 }
-            },
-            "$other": {
-                ".validate":false
             }
         }
     }
