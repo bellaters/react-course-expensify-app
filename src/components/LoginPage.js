@@ -7,10 +7,14 @@ import { startLogin } from '../actions/auth';
 // 3. Show Login component at root of app -> /
 // 4. Show ExpenseDashboardPage at -> /dashboard
 export const LoginPage = ({startLogin}) => (
-    <div>
-        <button onClick={startLogin}>
+    <div className="box-layout" >
+        <div className="box-layout__box">
+            <h1 className="box-layout__title">Expensify App</h1>
+            <p>It's time to get your expenses under control.</p>
+            <button onClick={startLogin}>
             Login
-        </button>        
+            </button>        
+        </div>
     </div>
 );
 
