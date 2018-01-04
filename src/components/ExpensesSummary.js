@@ -14,9 +14,9 @@ export const ExpensesSummary = ({count, total, hidden}) => {
                 <h1 className="page-header__title">
                 Viewing <span>{count}</span> {expenseWord} totalling <span>{formattedTotal}</span>
                 </h1>
-                <p>
-                  <span>{hidden}</span> are not shown.
-                </p>
+                <h3 className="page-header__title">
+                filtered out <span>{hidden}</span>
+                </h3>
                 <div className="page-header__actions">
                     <Link className="button" to="/create">Add Expense</Link>
                 </div>
