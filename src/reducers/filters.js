@@ -27,6 +27,8 @@ export default (state = filtersReducerDefaultState, action) => {
                 sortBy: 'amount'
             }
         case 'SET_START_DATE':
+            console.log('filter reducer: ', action.startDate);
+            
             return {
                 ...state,
                 startDate: action.startDate
