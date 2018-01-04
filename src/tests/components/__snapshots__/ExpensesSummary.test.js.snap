@@ -21,10 +21,12 @@ exports[` should correctly rendere ExpensesSummary with 1 expense 1`] = `
         $1.00
       </span>
     </h1>
-    <p>
+    <h3
+      className="page-header__title"
+    >
+      filtered out 
       <span />
-       are not shown.
-    </p>
+    </h3>
     <div
       className="page-header__actions"
     >
@@ -61,10 +63,12 @@ exports[` should correctly rendere ExpensesSummary with multiple expenses 1`] = 
         $10.00
       </span>
     </h1>
-    <p>
+    <h3
+      className="page-header__title"
+    >
+      filtered out 
       <span />
-       are not shown.
-    </p>
+    </h3>
     <div
       className="page-header__actions"
     >
